@@ -2,7 +2,6 @@ package controller;
 
 import model.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -43,6 +42,7 @@ public class Main {
 		System.out.println(palabra);
 		
 		while (terminado==false) {
+			
 		System.out.println(blanco);
 		String input = sc.next();
 		input=input.toLowerCase();
@@ -56,10 +56,15 @@ public class Main {
 		
 		//charAt consigue el primer caracter del String
 		char inputChar= input.charAt(0);
+<<<<<<< Updated upstream
 		int numLetra=0;
+=======
+		int letraBien=0;
+>>>>>>> Stashed changes
 		for (int i = 0; i < caracteresPalabras.length; i++) {
 			if (caracteresPalabras[i]==inputChar) {
 				caracteresBlanco[i]=inputChar;
+				letraBien++;
 				//método en Java que convierte diferentes tipos de datos en una representación de cadena (String)
 				blanco.set(i, String.valueOf(caracteresBlanco[i]));
 				numLetra++;
@@ -67,10 +72,19 @@ public class Main {
 			}
 			
 		}
+<<<<<<< Updated upstream
 		if (numLetra == 0) {
 			error.add(input);
 		}
 		System.out.println(error);
+=======
+		System.out.println(letraBien);
+		
+
+		
+		
+		
+>>>>>>> Stashed changes
 		
 		int contador = 0;
 		int numGuiones = 0;
