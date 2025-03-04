@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Main {
 
+	@SuppressWarnings("unlikely-arg-type")
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
@@ -24,6 +25,8 @@ public class Main {
 		palabras.add("kiwi");
 		
 		ArrayList <String> blanco = new ArrayList <String>();
+		
+		ArrayList<String> error = new ArrayList <String>();
 	
 		
 		Random random= new Random();
@@ -44,6 +47,8 @@ public class Main {
 		String input = sc.next();
 		input=input.toLowerCase();
 		
+		
+		
 		while(input.length()>1 || input.length()<0) {
 			System.out.println("Introduce un caracter");
 			input=sc.next();
@@ -51,15 +56,21 @@ public class Main {
 		
 		//charAt consigue el primer caracter del String
 		char inputChar= input.charAt(0);
-		
+		int numLetra=0;
 		for (int i = 0; i < caracteresPalabras.length; i++) {
 			if (caracteresPalabras[i]==inputChar) {
 				caracteresBlanco[i]=inputChar;
 				//método en Java que convierte diferentes tipos de datos en una representación de cadena (String)
 				blanco.set(i, String.valueOf(caracteresBlanco[i]));
+				numLetra++;
+				
 			}
 			
 		}
+		if (numLetra == 0) {
+			error.add(input);
+		}
+		System.out.println(error);
 		
 		int contador = 0;
 		int numGuiones = 0;
