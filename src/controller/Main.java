@@ -2,7 +2,6 @@ package controller;
 
 import model.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -24,6 +23,8 @@ public class Main {
 		palabras.add("kiwi");
 		
 		ArrayList <String> blanco = new ArrayList <String>();
+		
+		ArrayList<String> error = new ArrayList <String>();
 	
 		
 		Random random= new Random();
@@ -40,9 +41,12 @@ public class Main {
 		System.out.println(palabra);
 		
 		while (terminado==false) {
+			
 		System.out.println(blanco);
 		String input = sc.next();
 		input=input.toLowerCase();
+		
+		
 		
 		while(input.length()>1 || input.length()<0) {
 			System.out.println("Introduce un caracter");
@@ -51,15 +55,29 @@ public class Main {
 		
 		//charAt consigue el primer caracter del String
 		char inputChar= input.charAt(0);
-		
+		int numLetra=0;
+
 		for (int i = 0; i < caracteresPalabras.length; i++) {
 			if (caracteresPalabras[i]==inputChar) {
 				caracteresBlanco[i]=inputChar;
 				//método en Java que convierte diferentes tipos de datos en una representación de cadena (String)
 				blanco.set(i, String.valueOf(caracteresBlanco[i]));
+				numLetra++;
+				
 			}
 			
 		}
+
+		if (numLetra == 0) {
+			error.add(input);
+		}
+		System.out.println(error);
+
+		
+
+		
+		
+		
 		
 		int contador = 0;
 		int numGuiones = 0;
@@ -78,9 +96,10 @@ public class Main {
 		if (numGuiones == 0) {
 			terminado = true;
 		}
-
+		
 		
 		}
+		System.out.println(blanco);
 	}
 
 }
