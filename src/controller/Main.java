@@ -14,12 +14,14 @@ public class Main {
 
 		String palabra = "";
 		
+		boolean terminado=false;
+		
 		ArrayList <String> palabras = new ArrayList <String>();
 		
-		palabras.add("Melon");
-		palabras.add("Sandia");
-		palabras.add("Platano");
-		palabras.add("Kiwi");
+		palabras.add("melon");
+		palabras.add("sandia");
+		palabras.add("platano");
+		palabras.add("kiwi");
 		
 		ArrayList <String> blanco = new ArrayList <String>();
 	
@@ -36,6 +38,8 @@ public class Main {
 		
 		}
 		System.out.println(palabra);
+		
+		while (terminado==false) {
 		System.out.println(blanco);
 		String input = sc.next();
 		input=input.toLowerCase();
@@ -54,10 +58,29 @@ public class Main {
 				//método en Java que convierte diferentes tipos de datos en una representación de cadena (String)
 				blanco.set(i, String.valueOf(caracteresBlanco[i]));
 			}
+			
 		}
-		System.out.println(blanco);
 		
-		System.out.println(palabra);
+		int contador = 0;
+		int numGuiones = 0;
+		
+		while(contador < blanco.size()) {
+			
+			if(blanco.get(contador).equals("_")) {
+				
+				numGuiones++;
+				
+			}
+			
+			contador++;
+		}
+		
+		if (numGuiones == 0) {
+			terminado = true;
+		}
+
+		
+		}
 	}
 
 }
