@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class Main {
 
-	@SuppressWarnings("unlikely-arg-type")
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
@@ -56,15 +55,11 @@ public class Main {
 		
 		//charAt consigue el primer caracter del String
 		char inputChar= input.charAt(0);
-<<<<<<< Updated upstream
 		int numLetra=0;
-=======
-		int letraBien=0;
->>>>>>> Stashed changes
+
 		for (int i = 0; i < caracteresPalabras.length; i++) {
 			if (caracteresPalabras[i]==inputChar) {
 				caracteresBlanco[i]=inputChar;
-				letraBien++;
 				//método en Java que convierte diferentes tipos de datos en una representación de cadena (String)
 				blanco.set(i, String.valueOf(caracteresBlanco[i]));
 				numLetra++;
@@ -72,19 +67,17 @@ public class Main {
 			}
 			
 		}
-<<<<<<< Updated upstream
+
 		if (numLetra == 0) {
 			error.add(input);
 		}
 		System.out.println(error);
-=======
-		System.out.println(letraBien);
+
 		
 
 		
 		
 		
->>>>>>> Stashed changes
 		
 		int contador = 0;
 		int numGuiones = 0;
@@ -103,9 +96,10 @@ public class Main {
 		if (numGuiones == 0) {
 			terminado = true;
 		}
-
+		
 		
 		}
+		System.out.println(blanco);
 	}
 
 }
