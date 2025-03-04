@@ -1,5 +1,6 @@
 package controller;
 
+import model.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
@@ -37,6 +38,7 @@ public class Main {
 		System.out.println(palabra);
 		System.out.println(blanco);
 		String input = sc.next();
+		input=input.toLowerCase();
 		
 		while(input.length()>1 || input.length()<0) {
 			System.out.println("Introduce un caracter");
@@ -47,7 +49,7 @@ public class Main {
 		char inputChar= input.charAt(0);
 		
 		for (int i = 0; i < caracteresPalabras.length; i++) {
-			if (caracteresPalabras[i]==(inputChar)) {
+			if (caracteresPalabras[i]==inputChar) {
 				caracteresBlanco[i]=inputChar;
 				//método en Java que convierte diferentes tipos de datos en una representación de cadena (String)
 				blanco.set(i, String.valueOf(caracteresBlanco[i]));
