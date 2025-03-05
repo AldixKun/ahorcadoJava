@@ -5,13 +5,18 @@ import java.util.Random;
 
 public class PalabrasTema {
 	private  String [] pokemons={
-			"Bulbasaur","Squirtle","Charmander","Rowlet","Mimikyu","Psyduck"
+			"bulbasaur","squirtle","charmander","rowlet","mimikyu","psyduck"
 		};
 		private  String [] zelda= {
-				"Link","Zelda","Ganondorf"
+				"link","zelda","ganondorf"
 		};
 		private String palabra;
 		private Tematicas tema;
+		
+		public PalabrasTema() {
+			
+		}
+		
 		public PalabrasTema(Tematicas tematica) {
 			Random random = new Random();
 			int i=0;
@@ -50,8 +55,11 @@ public class PalabrasTema {
 		}
 		
 		public String getPalabra() {
-			return palabra+"//"+tema;
+			return palabra;
 			
 			
+		}
+		public void getTematicas() {
+			System.out.println(this.tema);
 		}
 }

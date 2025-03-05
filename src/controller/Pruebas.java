@@ -1,45 +1,47 @@
 package controller;
 
+import model.*;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
 import java.util.Scanner;
 
-import model.*;
-public class Main {
+public class Pruebas {
 
+	@SuppressWarnings("unlikely-arg-type")
 	public static void main(String[] args) {
-		Scanner sc = new Scanner (System.in);
-		
-		String [] tematicas= {"Pokemon","Zelda"};
-		ArrayList <String> blanco = new ArrayList <String>();
-		ArrayList<String> error = new ArrayList <String>();
+
+		Scanner sc = new Scanner(System.in);
+
+		String palabra = "";
+
 		boolean terminado=false;
-		
-		
-		System.out.println("¿Qué modo quieres jugar? (Introduce el número correspondiente)");
-		for (int i = 0; i < tematicas.length; i++) {
-			System.out.println("\r\n"+(i+1)+") "+tematicas[i]);
-		}
-		int inputNum = sc.nextInt();
-		inputNum=introducirinfobien(inputNum,tematicas.length);
-		PalabrasTema generarPalabra = new PalabrasTema ();
-		//Asignar tematica Palabra
-		switch (inputNum) {
-			case 1:
-				generarPalabra = new PalabrasTema (Tematicas.POKEMON);				
-				break;
-			case 2:
-				generarPalabra = new PalabrasTema(Tematicas.ZELDA);
-				break;
-		}
-		
-		//Asignar espacios en blanco+ array con chars
-		String palabra= generarPalabra.getPalabra();
-		System.out.println(palabra);
+
+		ArrayList <String> palabras = new ArrayList <String>();
+
+		palabras.add("melon");
+		palabras.add("sandia");
+		palabras.add("platano");
+		palabras.add("kiwi");
+
+		ArrayList <String> blanco = new ArrayList <String>();
+
+		ArrayList<String> error = new ArrayList <String>();
+
+
+		Random random= new Random();
+
+		palabra= palabras.get(random.nextInt(palabras.size()));
+
+
 		char[] caracteresPalabras = palabra.toCharArray();
 		char[] caracteresBlanco = palabra.toCharArray();
 		for (int i = 0; i< caracteresPalabras.length; i++) {
-		blanco.add("_");
+			blanco.add("_");
+
 		}
+		System.out.println(palabra);
+
 		while (terminado==false) {
 			System.out.println(blanco);
 			String input = sc.next();
@@ -90,21 +92,6 @@ public class Main {
 
 
 		}
-		System.out.println(blanco);
-		System.out.println("FELICIDADES :D");
-		
-	
 	}
-	
-	
 
-	
-	public static int introducirinfobien(int opcion,int numopciones) {
-		Scanner sc = new Scanner(System.in);
-		while (opcion>numopciones || opcion<=0) {
-			System.out.println("Introduce la información correctamente");
-			opcion=sc.nextInt();
-		}
-		return opcion;
-	}
 }
