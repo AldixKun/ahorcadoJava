@@ -31,6 +31,7 @@ public class Pruebas {
 
 		Random random= new Random();
 
+		Ascii.ganar();
 		palabra= palabras.get(random.nextInt(palabras.size()));
 
 
