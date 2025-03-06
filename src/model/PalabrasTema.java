@@ -8,13 +8,18 @@ public class PalabrasTema {
 			"Bulbasaur","Squirtle","Charmander","Rowlet","Mimikyu","Psyduck"
 		};
 		private  String [] zelda= {
-				"Link","Zelda","Ganondorf"
+				"link","zelda","ganondorf"
 		};
 		private String palabra;
 		private Tematicas tema;
+		private int i=0;
+		public PalabrasTema() {
+			
+		}
+		
 		public PalabrasTema(Tematicas tematica) {
 			Random random = new Random();
-			int i=0;
+			
 			if (tematica==Tematicas.POKEMON) {
 				i=random.nextInt(pokemons.length);
 				palabra=pokemons[i];
@@ -26,22 +31,6 @@ public class PalabrasTema {
 			}
 		}
 		
-		
-//		public  String[] getPokemons() {
-//			return pokemons;
-//		}
-	//
-//		public  String[] getZelda() {
-//			return zelda;
-//		}
-//		public  String getindexPokemon(int i) {
-//			
-//			return pokemons[i];
-//		}
-//		public  String getindexZelda(int i) {
-//			
-//			return zelda[i];
-//		}
 
 
 		@Override
@@ -50,8 +39,31 @@ public class PalabrasTema {
 		}
 		
 		public String getPalabra() {
-			return palabra+"//"+tema;
+			return palabra;
 			
 			
 		}
+		public void getTematicas() {
+			System.out.println(this.tema);
+		}
+		
+		//PRUEBAS
+		
+		public String getCategoria() {
+			String categoria="";
+			if (tema==Tematicas.POKEMON) {
+				if (i>=0 && i<2) {
+					categoria="Planta";
+				}else if (i>=2 && i<4) {
+					categoria= "Fuego";
+				}else {
+					categoria="Psiquico";
+				}
+			}else if(tema==Tematicas.ZELDA) {
+				
+			}
+			return categoria;
+		}
+		
+		
 }
