@@ -1,6 +1,7 @@
 package model;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,7 +11,10 @@ public class LeerCsv {
 	public static ArrayList<CsvPokemons> leerCsvPokemon() {
 		//Archivo prueba
 //		String archivo = "C:/Users/Freddy/Downloads/csvPokemon.csv";
-		String archivo = "C:/Users/Freddy/Downloads/pokemon_primera_generacion.csv"; // Ruta del archivo CSV
+//		String archivo = "C:/Users/Freddy/Downloads/pokemon_primera_generacion.csv"; 
+		// Ruta del archivo CSV
+		
+		String archivo = "pokemon_primera_generacion.csv"; 
 		ArrayList<String> nombres = new ArrayList<>();
 		ArrayList<CsvPokemons> pokemons= new ArrayList();
 		CsvPokemons pokemon= new CsvPokemons();

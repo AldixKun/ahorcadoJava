@@ -1,6 +1,9 @@
 package controller;
 
 import model.*;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
@@ -28,10 +31,14 @@ public class Pruebas {
 
 		ArrayList<String> error = new ArrayList <String>();
 
-
+//		File file = new File("pokemon_primera_generacion.csv");
 		Random random= new Random();
 		Menu.menu();
-		
+//		try {
+//			file.createNewFile();
+//		} catch (IOException e) {
+//            System.out.println("Error al crear el archivo: " + e.getMessage());
+//		}
 		System.out.println("TERMINO PRUEBA");
 //		Ascii.ganar();
 		palabra= palabras.get(random.nextInt(palabras.size()));
