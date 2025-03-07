@@ -1,18 +1,19 @@
-package controller;
+package model;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import model.*;
-public class Main {
+public class Juego {
 
-	public static void main(String[] args) {
+	public static void juego(PalabrasTema generarPalabra) {
+//		asignarBlanco(generarPalabra);
 		Scanner sc = new Scanner (System.in);
 		
-		String [] tematicas= {"Pokemon","Zelda"};
+//		String [] tematicas= {"Pokemon","Zelda"};
 		ArrayList <String> blanco = new ArrayList <String>();
-		ArrayList<String> error = new ArrayList <String>();
+		
 		ArrayList<String> ascii = new ArrayList <String>();
+		ascii.add(Ascii.vacio());
 		ascii.add(Ascii.cabeza1());
 		ascii.add(Ascii.torso2());
 		ascii.add(Ascii.brazo3());
@@ -20,37 +21,38 @@ public class Main {
 		ascii.add(Ascii.pierna5());
 		ascii.add(Ascii.pierna6());
 		
-		boolean terminado=false;
 		
+		String palabra=asignarBlanco(generarPalabra);
 		
-		System.out.println("¿Qué modo quieres jugar? (Introduce el número correspondiente)");
-		for (int i = 0; i < tematicas.length; i++) {
-			System.out.println("\r\n"+(i+1)+") "+tematicas[i]);
-		}
-		int inputNum = sc.nextInt();
-		inputNum=introducirinfobien(inputNum,tematicas.length);
-		PalabrasTema generarPalabra = new PalabrasTema ();
-		//Asignar tematica Palabra
-		switch (inputNum) {
-			case 1:
-				generarPalabra = new PalabrasTema (Tematicas.POKEMON);				
-				break;
-			case 2:
-				generarPalabra = new PalabrasTema(Tematicas.ZELDA);
-				break;
-		}
-		
-		//Asignar espacios en blanco+ array con chars
-		String palabra= generarPalabra.getPalabra();
-		System.out.println(palabra);
-		System.out.println(generarPalabra.getCat1());
 		//Transformar en lowercase para poder "contar" la primera mayúscula
 		char[] caracteresPalabras = palabra.toLowerCase().toCharArray();
 		char[] caracteresBlanco = palabra.toCharArray();
 		for (int i = 0; i< caracteresPalabras.length; i++) {
 		blanco.add("_");
 		}
+		adivinarPalabra(palabra,caracteresPalabras,caracteresBlanco,blanco,ascii);
 		
+
+//		System.out.println("FELICIDADES :D");
+		
+		
+	}
+	public static String asignarBlanco(PalabrasTema generarPalabra) {
+		ArrayList <String> blanco = new ArrayList <String>();
+		//Asignar espacios en blanco+ array con chars
+		String palabra= generarPalabra.getPalabra();
+		System.out.println(palabra);
+		System.out.println(generarPalabra.getCat1());
+		System.out.println(generarPalabra.getCat2());
+		System.out.println(generarPalabra.getColor());
+		return palabra;
+		
+
+	}
+	public static boolean adivinarPalabra(String palabra, char[] caracteresPalabras, char[] caracteresBlanco, ArrayList<String> blanco, ArrayList<String> ascii) {
+		Scanner sc = new Scanner(System.in);
+		ArrayList<String> error = new ArrayList <String>();
+		boolean terminado=false;
 		while (terminado==false && error.size()<6) {
 			if (error.size()==0) {
 				System.out.println(Ascii.vacio());
@@ -59,7 +61,6 @@ public class Main {
 					System.out.println(ascii.get(error.size()));
 			}
 			System.out.println(error);
-			
 			System.out.println(blanco);
 			String input = sc.next();
 			input=input.toLowerCase();
@@ -82,6 +83,7 @@ public class Main {
 					blanco.set(i, String.valueOf(caracteresBlanco[i]));
 					numLetra++;
 				}
+				
 			}
 			if (numLetra == 0) {
 				error.add(input);
@@ -106,27 +108,16 @@ public class Main {
 			
 		}
 		
-		System.out.println(palabra);
+		
 		if (terminado) {
 			Ascii.ganar();
 			System.out.println("Felicidades :D");
 		}else {
+			System.out.println(Ascii.pierna6());
+			
 			System.out.println("Has perdido :(");
 		}
-//		System.out.println("FELICIDADES :D");
-		
-	
-	}
-	
-	
-
-	
-	public static int introducirinfobien(int opcion,int numopciones) {
-		Scanner sc = new Scanner(System.in);
-		while (opcion>numopciones || opcion<=0) {
-			System.out.println("Introduce la información correctamente");
-			opcion=sc.nextInt();
-		}
-		return opcion;
+		System.out.println(palabra);
+		return terminado;
 	}
 }

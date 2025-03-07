@@ -30,8 +30,10 @@ public class Pruebas {
 
 
 		Random random= new Random();
-
-		Ascii.ganar();
+		Menu.menu();
+		
+		System.out.println("TERMINO PRUEBA");
+//		Ascii.ganar();
 		palabra= palabras.get(random.nextInt(palabras.size()));
 
 
